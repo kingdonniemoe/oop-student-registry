@@ -9,22 +9,26 @@ class Student:
         self._grade = grade
         self.student_count = Student.count
         Student.count += 1
+
     @property
     def get_name(self):
         return self._name
+    
     @get_name.setter
     def set_name(self, name):
         try:
-            if re.match(r'[\w]{3,}$', name):
-                self._name = name.title()
+            if re.match(r'^[A-Z][a-zA-Z]{2,}$', name):
+                self._name = name
             else:
                 raise ValueError("Invalid Name")
             
         except TypeError:
             print("Invaled input type for name. Name not updated.")
+
     @property
     def get_age(self):
         return self._age
+    
     @get_age.setter
     def set_age(self, age):
         try: 
@@ -39,9 +43,11 @@ class Student:
             
             elif age > 18:
                 raise ValueError("You are too old!")
+            
     @property
     def get_grade(self):
         return self._grade
+    
     @get_grade.setter
     def set_grade(self, grade):
         try:
